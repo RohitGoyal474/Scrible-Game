@@ -5,6 +5,7 @@ class Gamemanager {
     this.player = [];
   }
   getplayers() {
+    
     return this.player;
   }
 
@@ -18,18 +19,20 @@ class Gamemanager {
     return newplayer;
   }
   removeplayer(player) {
-    this.player.pop(player);
+    const playerId=player.id;
+    console.log("removeplayer in gamemanager",playerId);
+    
+    this.player = this.player.filter((p) => p.id !== playerId);
   }
   addScore(player) {
-    console.log("player", player);
-    console.log("this.players", this.player);
+    
     const playerIndex = this.player.findIndex((p) => p.id === player.data.id);
 
     if (playerIndex !== -1) {
-        console.log("playerIndex",playerIndex);
+      
       this.player[playerIndex].score += 1;
     } else {
-      console.error(`Player with id ${player.id} not found.`);
+      console.error(`Player with id ${player.data.id} not found.`);
     }
   }
 }

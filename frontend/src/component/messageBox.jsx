@@ -35,7 +35,13 @@ export const MessageBox = ({ socket, messages }) => {
       </button>
       <div>
         {messages.map((item) => {
-          return <div key={item}>{item}</div>;
+            if(item==="answer"){
+                return <div key={Math.random()} className="bg-green-300">{item}</div>;
+            }
+            else{
+                return <div key={item}>{item}</div>;
+            }
+          
         })}
       </div>
     </div>
